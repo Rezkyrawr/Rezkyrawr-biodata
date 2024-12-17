@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Biodata Pengguna</title>
+    <style>
+        /* Mengatur gaya umum untuk halaman */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #f8c6d2, #ffffff); /* Gradasi pink muda ke putih */
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Container utama */
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+        }
+
+        /* Header */
+        header h1 {
+            text-align: center;
+            color: #ff6f8f;
+        }
+
+        /* Form input */
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #ff6f8f;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff4e6b;
+        }
+
+        /* Menampilkan biodata */
+        .profile {
+            margin-top: 30px;
+        }
+
+        .profile h2 {
+            color: #ff6f8f;
+        }
+
+        .profile p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Formulir Biodata</h1>
+        </header>
+
+        <form id="biodataForm">
+            <label for="name">Nama Lengkap:</label>
+            <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+
+            <label for="dob">Tempat, Tanggal Lahir:</label>
+            <input type="text" id="dob" name="dob" placeholder="Masukkan tempat, tanggal lahir" required>
+
+            <label for="address">Alamat:</label>
+            <textarea id="address" name="address" rows="4" placeholder="Masukkan alamat lengkap" required></textarea>
+
+            <label for="phone">Nomor Telepon:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor telepon" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Masukkan email" required>
+
+            <label for="hobbies">Hobi:</label>
+            <input type="text" id="hobbies" name="hobbies" placeholder="Masukkan hobi (pisahkan dengan koma)" required>
+
+            <button type="submit">Simpan Biodata</button>
+        </form>
+
+        <div id="profileSection" class="profile" style="display:none;">
+            <h2>Profil yang Disimpan</h2>
+            <p><strong>Nama:</strong> <span id="profileName"></span></p>
+            <p><strong>Tempat, Tanggal Lahir:</strong> <span id="profileDob"></span></p>
+            <p><strong>Alamat:</strong> <span id="profileAddress"></span></p>
+            <p><strong>Nomor Telepon:</strong> <span id="profilePhone"></span></p>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+            <p><strong>Hobi:</strong> <span id="profileHobbies"></span></p>
+        </div>
+
+        <footer>
+            <p>Profil ini dibuat untuk latihan belajar HTML, CSS, dan JavaScript</p>
+        </footer>
+    </div>
+
+    <script>
+        // Menangani pengisian form dan menampilkan hasilnya
+        document.getElementById("biodataForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Mencegah form dari pengiriman default
+
+            // Ambil nilai dari form
+            const name = document.getElementById("name").value;
+            const dob = document.getElementById("dob").value;
+            const address = document.getElementById("address").value;
+            const phone = document.getElementById("phone").value;
+            const email = document.getElementById("email").value;
+            const hobbies = document.getElementById("hobbies").value;
+
+            // Menampilkan biodata yang dimasukkan ke dalam halaman
+            document.getElementById("profileName").textContent = name;
+            document.getElementById("profileDob").textContent = dob;
+            document.getElementById("profileAddress").textContent = address;
+            document.getElementById("profilePhone").textContent = phone;
+            document.getElementById("profileEmail").textContent = email;
+            document.getElementById("profileHobbies").textContent = hobbies;
+
+            // Menyembunyikan form dan menampilkan profil yang telah disimpan
+            document.getElementById("biodataForm").style.display = "none";
+            document.getElementById("profileSection").style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
